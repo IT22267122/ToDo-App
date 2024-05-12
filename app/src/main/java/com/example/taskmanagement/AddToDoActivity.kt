@@ -21,10 +21,10 @@ import com.example.taskmanagement.databinding.ActivityMainBinding
         binding.saveButton.setOnClickListener{
             val title=binding.titleEditText.text.toString()
             val content =binding.contentEditText.text.toString()
-            val todo = ToDo(0,title,content)
-            db.insertToDo(todo)
+            val todo = Note(0,title,content)
+            db.insertNote(todo)
             finish()
-            Toast.makeText(this,"Note Saved",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Task Saved",Toast.LENGTH_SHORT).show()
         }
     }
 }
