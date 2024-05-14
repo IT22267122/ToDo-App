@@ -90,4 +90,25 @@ class ToDosDatabaseHelper(context:Context):SQLiteOpenHelper(context,DATABASE_NAM
         db.delete(TABLE_NAME, whereClause, whereArgs)
         db.close()
     }
+
+    fun searchNotes(query: String): List<Note> {
+        val notesList = mutableListOf<Note>()
+        val db = readableDatabase
+        val searchQuery = "SELECT * FROM $TABLE_NAME WHERE $COLUMN_TITLE LIKE '%$query%' OR $COLUMN_CONTENT LIKE '%$query%'"
+        val cursor = db.rawQuery(searchQuery, null)
+
+        while (cursor.moveToNext()) {
+            val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID))
+            val title = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TITLE))
+            val content = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CONTENT))
+
+            val note = Note(id, title, content)
+            notesList.add(note)
+        }
+
+        cursor.close()
+        db.close()
+        return notesList
+    }
+
 }

@@ -20,27 +20,41 @@
         android:textSize="24sp"
         />
 
+    <!-- SearchView -->
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/todosHeading"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="16dp"
+        android:iconifiedByDefault="false"
+        android:background="@drawable/orange_border"
+        android:backgroundTint="#8FA3D066"
+        android:queryHint="Search tasks..."
+        app:iconifiedByDefault="false" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notesRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
+        android:layout_below="@id/searchView"
+        android:layout_marginTop="8dp"
         android:padding="16dp"
         />
 
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <ImageView
         android:id="@+id/addButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:src="@drawable/add"
-        app:tint="@color/white"
         android:backgroundTint="@color/green"
      />
 

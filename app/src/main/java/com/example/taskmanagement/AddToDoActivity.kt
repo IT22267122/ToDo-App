@@ -21,10 +21,18 @@ import com.example.taskmanagement.databinding.ActivityMainBinding
         binding.saveButton.setOnClickListener{
             val title=binding.titleEditText.text.toString()
             val content =binding.contentEditText.text.toString()
-            val todo = Note(0,title,content)
-            db.insertNote(todo)
-            finish()
-            Toast.makeText(this,"Task Saved",Toast.LENGTH_SHORT).show()
+
+
+            // Check if title or content is empty
+            if (title.isEmpty() || content.isEmpty()) {
+                Toast.makeText(this, "Please enter both title and content", Toast.LENGTH_SHORT).show()
+            } else {
+                // If both fields are not empty, proceed with saving the task
+                val todo = Note(0, title, content)
+                db.insertNote(todo)
+                finish()
+                Toast.makeText(this, "Task Saved", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
